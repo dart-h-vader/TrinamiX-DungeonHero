@@ -111,7 +111,7 @@ def dragonAttackPlayer():
 
 	if player.health > 0 and playInProgress == True:
 		dragonAttackCount += 1
-		player.health -= 2
+		player.health -= 3
 		threading.Timer(1.5, dragonAttackPlayer).start() # We start the timer again for the next attack
 	elif playerAlreadyDead == False:
 		updateProgress()
