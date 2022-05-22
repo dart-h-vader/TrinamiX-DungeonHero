@@ -15,7 +15,8 @@ Hope you have fun playing the game similar to what I had while building it.
 3. We have used the below standard python3 libraries
     * `threading` - To ensure the monster attacks happen on a timer
     * `sys` - To exit the program via sys.exit()
-4. The game is developed and tested on python3
+4. The project *does not* use any third party library 
+5. The game is developed and tested on python3
 
 
 # TODO (When having more than 2 hours)
