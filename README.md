@@ -8,6 +8,10 @@ Attacking the dragon or orc is simple. Type 'attack dragon' to attack the dragon
 
 Hope you have fun playing the game similar to what I had while building it.
 
+## Starting the game
+1. Ensure you have `python3` installed on your machine. `Python3` comes pre-installed on Linux and Mac. For windows, please take a look [here]( https://phoenixnap.com/kb/how-to-install-python-3-windows)
+2. Clone the repository or download the `main` branch
+3. From the downloaded directory, exectue `python3 Game.py`
 
 ## Technical Notes
 1. The game is tested using the happy path and not so happy path
