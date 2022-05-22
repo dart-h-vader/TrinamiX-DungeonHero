@@ -95,7 +95,7 @@ def orcAttackPlayer():
 	if player.health > 0 and playInProgress == True:
 		orcAttackCount += 1
 		player.health -= 1
-		threading.Timer(1.5, orcAttackPlayer).start()
+		threading.Timer(1.5, orcAttackPlayer).start() # We start the timer again for the next attack
 	elif playerAlreadyDead == False:
 		updateProgress()
 	
@@ -112,7 +112,7 @@ def dragonAttackPlayer():
 	if player.health > 0 and playInProgress == True:
 		dragonAttackCount += 1
 		player.health -= 2
-		threading.Timer(1.5, dragonAttackPlayer).start()
+		threading.Timer(1.5, dragonAttackPlayer).start() # We start the timer again for the next attack
 	elif playerAlreadyDead == False:
 		updateProgress()
 
