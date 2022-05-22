@@ -19,6 +19,11 @@ from Player import Player
 from Dragon import Dragon
 from Orc import Orc
 
+# Define cost of each hit by the monster and the player
+DRAGON_HIT_VALUE = 3
+ORC_HIT_VALUE = 1
+PLAYER_HIT_VALUE = 2
+
 
 orcAttackCount = 0
 dragonAttackCount = 0
@@ -59,7 +64,7 @@ def playerLose():
 	global dragonAttackCount
 	print("\n--------------GAME OVER-------------\n")
 	printMonsterHits()		
-	print("You lost the game")
+	print("You were killed by the monsters. You lost the game.")
 	sys.exit()
 
 # Function to update the game progress based on the health of our three characters
@@ -94,7 +99,7 @@ def orcAttackPlayer():
 
 	if player.health > 0 and playInProgress == True:
 		orcAttackCount += 1
-		player.health -= 1
+		player.health -= ORC_HIT_VALUE
 		threading.Timer(1.5, orcAttackPlayer).start() # We start the timer again for the next attack
 	elif playerAlreadyDead == False:
 		updateProgress()
@@ -111,7 +116,7 @@ def dragonAttackPlayer():
 
 	if player.health > 0 and playInProgress == True:
 		dragonAttackCount += 1
-		player.health -= 3
+		player.health -= DRAGON_HIT_VALUE
 		threading.Timer(1.5, dragonAttackPlayer).start() # We start the timer again for the next attack
 	elif playerAlreadyDead == False:
 		updateProgress()
@@ -134,7 +139,7 @@ def playerAttackOrc():
 	if orc.health <= 0:
 		print("The orc is already dead")
 		return
-	orc.health -= 2
+	orc.health -= PLAYER_HIT_VALUE
 	# There is a possibility that the Orc's health can be less than 0. We check for this and print 0 even if the actual health is less than 0 (eg: -1)
 	print("Player attacked orc. Orc health is {}".format(0  if orc.health < 0 else orc.health)) 
 	printMonsterHits()
@@ -147,7 +152,7 @@ def playerAttackDragon():
 		print("The dragon is already dead")
 		return
 
-	dragon.health -= 2
+	dragon.health -= PLAYER_HIT_VALUE
 	# There is a possibility that the Dragon's health can be less than 0. We check for this and print 0 even if the actual health is less than 0 (eg: -1)
 	print("Player attacked dragon. Dragon health is {}".format(0  if dragon.health < 0 else dragon.health))
 	printMonsterHits()
