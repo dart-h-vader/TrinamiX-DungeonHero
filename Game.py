@@ -1,7 +1,10 @@
 import threading # Required for timer based attack on player
 import sys
+ 
 
-from GameLogic import * #Game logic is separated into a new py file 
+from NewGameLogic import NewGameLogic
+
+gameLogic = NewGameLogic()
 
 helpString = """This is our demo game. I call it the **Dungeon Hero**.
 
@@ -17,7 +20,6 @@ Hope you have fun playing the game similar to what I had while building it.
 
 Meaning, you will be killed if you do not attack the monster.
 """
-
 
 print (helpString)
 
@@ -38,16 +40,21 @@ while True:
 
 # Once the game starts, we begin the timer for the Orc attack and Dragon attack. Every 1.5 seconds, the Orc attacks the player and every 2.0 seconds
 # the dragon attacks the player
-threading.Timer(1.5, orcAttackPlayer).start() 
-threading.Timer(2.0, dragonAttackPlayer).start()
 
+def startOrcAttack():
+	gameLogic.orcAttackPlayer()
+
+def startDragonAttack():
+	gameLogic.dragonAttackPlayer()
+
+threading.Timer(1.5, startOrcAttack).start() 
+threading.Timer(2.0, startDragonAttack).start()
 
 # We wait for player input for his attack strategy and act accordingly.
 # NOTE: The two monsters keep attacking even if the player does not attack leading to the death of the player
-while isGameRunning() == True:
+while gameLogic.isGameRunning() == True:
 	playerAttack = input("Type 'attack dragon' to attack the dragon or 'attack orc' to attack the orc: ")
-
 	if playerAttack.lower() == 'attack orc':
-		playerAttackOrc()
+		gameLogic.playerAttackOrc()
 	elif playerAttack.lower() == 'attack dragon':
-		playerAttackDragon()
+		gameLogic.playerAttackDragon()

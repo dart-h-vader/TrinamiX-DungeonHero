@@ -60,8 +60,6 @@ def playerWin():
 	
 # Feedback of loss and exit the game
 def playerLose():
-	global orcAttackCount
-	global dragonAttackCount
 	print("\n--------------GAME OVER-------------\n")
 	printMonsterHits()		
 	print("You were killed by the monsters. You lost the game.")
